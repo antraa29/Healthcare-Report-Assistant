@@ -1,0 +1,13 @@
+HbA1c reflects average blood sugar levels over the past 2-3 months. A normal range is typically below 5.7%. Levels between 5.7% and 6.4% suggest prediabetes, while 6.5% or higher on repeated tests may indicate diabetes. Elevated HbA1c means blood sugar has been running high over time, not just at a single moment.
+
+Fasting Blood Sugar (Glucose) measures blood sugar after at least 8 hours without food. Normal fasting glucose is generally 70-99 mg/dL. Levels of 100-125 mg/dL suggest prediabetes, and 126 mg/dL or above on repeated tests may indicate diabetes. Low readings (hypoglycemia) can cause shakiness, dizziness, or confusion.
+
+Uric Acid is a waste product from the breakdown of purines in food and cells. Normal range is roughly 3.5-7.2 mg/dL for adults. High uric acid (hyperuricemia) is linked to gout and kidney stones. Low levels are less common and usually not clinically significant on their own.
+
+Vitamin D (25-Hydroxyvitamin D) supports bone health, calcium absorption, and immune function. Levels below 20 ng/mL are generally considered deficient, 20-30 ng/mL insufficient, and above 30 ng/mL sufficient. Deficiency is common and linked to fatigue, bone pain, and weakened immunity.
+
+Vitamin B12 is essential for nerve function and red blood cell production. Normal range is roughly 200-900 pg/mL. Low B12 can cause fatigue, weakness, tingling in hands/feet, and memory issues, and is common in vegetarians/vegans and older adults.
+
+Prolactin is a hormone mainly associated with milk production but present in all people. Normal range is roughly 4-23 ng/mL in non-pregnant adults. Elevated prolactin can be caused by stress, certain medications, or pituitary conditions, and may affect menstrual cycles or fertility.
+
+TSH (Thyroid Stimulating Hormone) regulates thyroid function. Normal range is roughly 0.4-4.0 mIU/L. High TSH usually indicates an underactive thyroid (hypothyroidism), while low TSH usually indicates an overactive thyroid (hyperthyroidism).
