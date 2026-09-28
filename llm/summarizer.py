@@ -8,7 +8,7 @@ from rag.qa_chain import retrieve_context_for_patient_data
 load_dotenv()
 
 llm = ChatGoogleGenerativeAI(
-    model="gemini-3.6-flash",
+    model="gemini-3.5-flash-lite",
     temperature=0.3,
 )
 
