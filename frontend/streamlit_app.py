@@ -76,7 +76,6 @@ if uploaded_file:
 
         try:
 
-            # Send PDF directly to FastAPI
             response = requests.post(
                 API_URL,
                 files={
@@ -98,6 +97,7 @@ if uploaded_file:
                 result = response.json()
 
                 patient_data = result["patient_data"]
+                lab_analysis = result["lab_analysis"]
                 summary = result["summary"]
 
                 st.success(
@@ -118,10 +118,6 @@ if uploaded_file:
                 st.stop()
 
 
-        # -----------------------------
-        # Connection Error
-        # -----------------------------
-
         except requests.exceptions.ConnectionError:
 
             st.error(
@@ -132,10 +128,6 @@ if uploaded_file:
             st.stop()
 
 
-        # -----------------------------
-        # Timeout Error
-        # -----------------------------
-
         except requests.exceptions.Timeout:
 
             st.error(
@@ -145,10 +137,6 @@ if uploaded_file:
 
             st.stop()
 
-
-        # -----------------------------
-        # Unexpected Error
-        # -----------------------------
 
         except Exception as e:
 
@@ -204,23 +192,51 @@ if uploaded_file:
 
     rows = []
 
-    for key, value in patient_data.items():
+    for test_name, result_data in lab_analysis.items():
 
-        if key not in [
-            "patient_name",
-            "age_gender"
-        ]:
+        status = result_data.get(
+            "status",
+            "UNKNOWN"
+        )
 
-            rows.append(
-                {
-                    "Test": key.replace(
-                        "_",
-                        " "
-                    ).title(),
+        # Add visual indicator to status
+        if status == "NORMAL":
+            display_status = "🟢 NORMAL"
 
-                    "Value": value
-                }
-            )
+        elif status == "LOW":
+            display_status = "🔴 LOW"
+
+        elif status == "HIGH":
+            display_status = "🔴 HIGH"
+
+        else:
+            display_status = "⚪ UNKNOWN"
+
+        rows.append(
+            {
+                "Test": test_name.replace(
+                    "_",
+                    " "
+                ).title(),
+
+                "Result": result_data.get(
+                    "value",
+                    "N/A"
+                ),
+
+                "Unit": result_data.get(
+                    "unit",
+                    "N/A"
+                ),
+
+                "Reference Range": result_data.get(
+                    "reference",
+                    "N/A"
+                ),
+
+                "Status": display_status,
+            }
+        )
 
     df = pd.DataFrame(rows)
 
@@ -229,6 +245,71 @@ if uploaded_file:
         use_container_width=True,
         hide_index=True
     )
+
+
+    # -----------------------------
+    # Result Overview
+    # -----------------------------
+
+    st.divider()
+
+    st.subheader(
+        "📊 Result Overview"
+    )
+
+    normal_count = sum(
+        1
+        for item in lab_analysis.values()
+        if item.get("status") == "NORMAL"
+    )
+
+    low_count = sum(
+        1
+        for item in lab_analysis.values()
+        if item.get("status") == "LOW"
+    )
+
+    high_count = sum(
+        1
+        for item in lab_analysis.values()
+        if item.get("status") == "HIGH"
+    )
+
+    unknown_count = sum(
+        1
+        for item in lab_analysis.values()
+        if item.get("status") == "UNKNOWN"
+    )
+
+    col1, col2, col3, col4 = st.columns(4)
+
+    with col1:
+
+        st.metric(
+            "Normal",
+            normal_count
+        )
+
+    with col2:
+
+        st.metric(
+            "Low",
+            low_count
+        )
+
+    with col3:
+
+        st.metric(
+            "High",
+            high_count
+        )
+
+    with col4:
+
+        st.metric(
+            "Unknown",
+            unknown_count
+        )
 
 
     # -----------------------------
