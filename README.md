@@ -4,7 +4,7 @@ An AI-powered healthcare report analysis application that extracts patient and l
 
 ## 🚀 Overview
 
-Healthcare Report Assistant is an end-to-end AI application designed to simplify the interpretation of laboratory reports.
+Healthcare Report Assistant is an end-to-end AI application designed to simplify the analysis of laboratory reports.
 
 The system combines:
 
@@ -26,7 +26,7 @@ PDF Text Extraction
         ↓
 Patient & Lab Data Extraction
         ↓
-Lab Reference Range Classification
+Reference Range Classification
         ↓
 RAG Context Retrieval
         ↓
